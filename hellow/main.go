@@ -4,11 +4,15 @@ import (
 	"fmt"
 )
 
+const croatian = "Croatian"
+const hungarian = "Hungarian"
 const french = "Frernch"
 const spanish = "Spanish"
 const englishHelloPrefix = "Hello, "
 const spanishHelloPrefix = "Hola, "
 const frenchHelloPrefix = "Bonjur, "
+const hungarianHelloPrefix = "Szia, "
+const croatianHelloPrefix = "Bok, "
 
 func main() {
 	fmt.Println(Hello("world", ""))
@@ -28,6 +32,12 @@ func greretingPrefix(language string) (prefix string) {
 
 	case french:
 		prefix = frenchHelloPrefix
+
+	case hungarian:
+		prefix = hungarianHelloPrefix
+
+	case croatian:
+		prefix = croatianHelloPrefix
 
 	default:
 		prefix = englishHelloPrefix
