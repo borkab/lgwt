@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 const french = "Frernch"
 const spanish = "Spanish"
@@ -16,14 +18,19 @@ func Hello(name string, language string) string {
 	if name == "" {
 		name = "World"
 	}
-	prefix := englishHelloPrefix
+	return greretingPrefix(language) + name
+}
 
+func greretingPrefix(language string) (prefix string) {
 	switch language {
 	case spanish:
 		prefix = spanishHelloPrefix
 
 	case french:
 		prefix = frenchHelloPrefix
+
+	default:
+		prefix = englishHelloPrefix
 	}
-	return prefix + name
+	return
 }
