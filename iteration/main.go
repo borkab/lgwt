@@ -24,6 +24,13 @@ func main() {
 	fmt.Scanln(&char)
 
 	fmt.Println(count(in, char))
+
+	fmt.Println("type an other character to check")
+	var this string
+	fmt.Scanln(&this)
+
+	fmt.Println(contain(in, this))
+
 }
 
 func Repeat(character string, count int) string {
@@ -39,4 +46,8 @@ func Repeat(character string, count int) string {
 func count(s, ch string) int {
 
 	return strings.Count(s, ch)
+}
+
+func contain(ss, c string) bool {
+	return strings.ContainsAny(ss, c)
 }

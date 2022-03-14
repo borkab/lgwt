@@ -34,3 +34,12 @@ func TestCount(t *testing.T) {
 		t.Errorf("got %d want %d", got, want)
 	}
 }
+
+func TestContain(t *testing.T) {
+	got := contain("kukmuki", "u")
+	want := true
+
+	if got != want {
+		t.Errorf("got %v want %v", got, want)
+	}
+}
