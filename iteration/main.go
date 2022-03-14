@@ -1,15 +1,29 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 //const repeatCount = 5
 
 func main() {
+	fmt.Println("type a number")
 	var input int
 	fmt.Scanln(&input)
-	char := "b"
+	chars := "b"
 
-	fmt.Println(Repeat(char, input))
+	fmt.Println(Repeat(chars, input))
+
+	fmt.Println("type in a world")
+	var in string
+	fmt.Scanln(&in)
+
+	fmt.Println("type a character to count")
+	var char string
+	fmt.Scanln(&char)
+
+	fmt.Println(count(in, char))
 }
 
 func Repeat(character string, count int) string {
@@ -20,4 +34,9 @@ func Repeat(character string, count int) string {
 		repeated += character
 	}
 	return repeated
+}
+
+func count(s, ch string) int {
+
+	return strings.Count(s, ch)
 }
