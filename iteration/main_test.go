@@ -25,3 +25,12 @@ func ExampleRepeat() {
 	fmt.Println(rep)
 	//output: foofoofoo
 }
+
+func TestCount(t *testing.T) {
+	got := count("lilla", "l")
+	want := 3
+
+	if got != want {
+		t.Errorf("got %d want %d", got, want)
+	}
+}
