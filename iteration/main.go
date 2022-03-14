@@ -1,10 +1,20 @@
-package iteration
+package main
 
-const repeatCount = 5
+import "fmt"
+
+//const repeatCount = 5
+
+func main() {
+
+	fmt.Println(Repeat("b"))
+}
 
 func Repeat(character string) string {
 	var repeated string
-	for i := 0; i < repeatCount; i++ {
+	var input int
+	fmt.Scanln(&input)
+
+	for i := 0; i < input; i++ {
 		repeated += character
 	}
 	return repeated
