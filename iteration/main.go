@@ -5,16 +5,18 @@ import "fmt"
 //const repeatCount = 5
 
 func main() {
-
-	fmt.Println(Repeat("b"))
-}
-
-func Repeat(character string) string {
-	var repeated string
 	var input int
 	fmt.Scanln(&input)
+	char := "b"
 
-	for i := 0; i < input; i++ {
+	fmt.Println(Repeat(char, input))
+}
+
+func Repeat(character string, count int) string {
+
+	var repeated string
+
+	for i := 0; i < count; i++ {
 		repeated += character
 	}
 	return repeated
