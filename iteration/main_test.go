@@ -1,10 +1,14 @@
-package iteration
+package main
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestRepeat(t *testing.T) {
+	input := fmt.Scanln(&input)
 	repeated := Repeat("a")
-	expected := "aaaaa"
+	expected := "a" * input
 
 	if repeated != expected {
 		t.Errorf("expected %q but got %q", expected, repeated)
