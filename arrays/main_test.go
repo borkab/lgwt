@@ -1,14 +1,52 @@
 package main
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestSum(t *testing.T) {
-	numbers := [5]int{1, 2, 3, 4, 5}
 
-	got := sum(numbers)
-	want := 15
+	t.Run("collection of 5 numbers", func(t *testing.T) {
 
-	if got != want {
-		t.Errorf("got %d want %d", got, want)
+		numbers := []int{1, 2, 3, 4, 5}
+
+		got := Sum(numbers)
+		want := 15
+
+		if got != want {
+			t.Errorf("got %d want %d given, %v", got, want, numbers)
+		}
+	})
+
+	t.Run("collection of any size", func(t *testing.T) {
+		numbers := []int{1, 2, 3}
+
+		got := Sum(numbers)
+		want := 6
+
+		if got != want {
+			t.Errorf("got %d want %d given, %v", got, want, numbers)
+		}
+	})
+}
+
+func TestSumAll(t *testing.T) {
+
+	got := SumAll([]int{1, 2}, []int{0, 9})
+	want := []int{3, 9}
+
+	/*
+		if got != want {
+			t.Errorf("got %v want %v", got, want)
+		}
+	*/
+	//so it gets an error: invalid operation: got != want
+	//because a slice can only be compared to nil
+
+	//but with DeepEqual() u can check if two slices are deeply equal
+
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("got %v want %v", got, want)
 	}
 }
