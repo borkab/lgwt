@@ -4,6 +4,11 @@ import (
 	"fmt"
 )
 
+type Rectangle struct {
+	Width  float64
+	Height float64
+}
+
 func main() {
 	w := 10.0
 	h := 12.5
