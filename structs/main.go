@@ -4,23 +4,22 @@ import (
 	"fmt"
 )
 
-type Rectangle struct {
+type Rectangle struct { //we made a struct so we can take it as a single argument in a func
 	Width  float64
 	Height float64
 }
 
 func main() {
-	w := 10.0
-	h := 12.5
+	rect := Rectangle{10.0, 12.5}
 
-	fmt.Println(Perimeter(w, h))
-	fmt.Println(Area(w, h))
+	fmt.Println(Perimeter(rect))
+	fmt.Println(Area(rect))
 }
 
-func Perimeter(width, heigth float64) float64 {
-	return 2 * (width + heigth)
+func Perimeter(rectangle Rectangle) float64 { //rectangle is a variable type Rectangle what is our struct
+	return 2 * (rectangle.Width + rectangle.Height) //so we can call the stuff from our struct
 }
 
-func Area(width, heigth float64) float64 {
-	return width * heigth
+func Area(rectangle Rectangle) float64 {
+	return rectangle.Width * rectangle.Height
 }
