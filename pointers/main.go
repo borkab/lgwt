@@ -14,5 +14,5 @@ func (w *Wallet) Deposit(amount int) {
 }
 
 func (w *Wallet) Balance() int { // w is a copy of whatever we called the method from
-	return w.balance
+	return (*w).balance // w.balance is also completely valid because in the struct pointers are automatically dereferenced
 }
