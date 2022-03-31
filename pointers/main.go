@@ -34,7 +34,7 @@ func (b Bitcoin) String() string {
 
 func (w *Wallet) Withdraw(amount Bitcoin) error {
 	if amount > w.balance {
-		return errors.New("oh no") //creates a new error with a message of your choosing
+		return errors.New("cannot withdraw, insufficient funds") //creates a new error with a message of your choosing
 	}
 
 	w.balance -= amount
