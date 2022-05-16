@@ -1,5 +1,10 @@
 package main
 
 func Sum(numbers [5]int) int {
-	return 0
+	sum := 0
+	var num int
+	for _, num = range numbers {
+		sum += num
+	}
+	return sum
 }
