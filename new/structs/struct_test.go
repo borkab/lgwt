@@ -17,7 +17,7 @@ func TestPerimeter(t *testing.T) {
 	t.Run("circles", func(t *testing.T) {
 		circle := Circle{Radius: 10.0}
 		got := circle.Perimeter()
-		want := 314.1592653589793
+		want := 62.83185307179586
 
 		if got != want {
 			t.Errorf("got %2.f, want %2.f", got, want)
@@ -40,7 +40,7 @@ func TestArea(t *testing.T) {
 	t.Run("circles", func(t *testing.T) {
 		circle := Circle{Radius: 10}
 		got := circle.Area()
-		want := 62.83185307179586
+		want := 314.1592653589793
 
 		if got != want {
 			t.Errorf("got %g, want %g", got, want)
