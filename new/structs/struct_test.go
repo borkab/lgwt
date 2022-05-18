@@ -83,16 +83,36 @@ func TestArea(t *testing.T) {
 
 }
 func TestVolume(t *testing.T) {
+	tri := Triangle{12, 6, 17}
+	triPyramid := Pyramid{BaseArea: Triangle.Area(tri), BasePerimeter: Triangle.Perimeter(tri), Height: 21}
+	got := Shapes3D.Volume(triPyramid)
+	want := 251.999999748
 
+	if got != want {
+		t.Errorf("got %.9f want %.9f", got, want)
+	}
 }
 
 func TestSurfaceArea(t *testing.T) {
-	tri := Triangle{12, 6, 17}
-	triPyramid := TriangularPyramid{BaseArea: Triangle.Area(tri), BasePerimeter: Triangle.Perimeter(tri), SlantHeight: 23}
-	got := Shapes3D.SurfaceArea(triPyramid)
-	want := 438.5
 
-	if got != want {
-		t.Errorf("got %g want %g", got, want)
+	checkSurfaceArea := func(t testing.TB, shape Shapes3D, want float64) {
+		t.Helper()
+		got := shape.SurfaceArea()
+
+		if got != want {
+			t.Errorf("got %g want %g", got, want)
+		}
 	}
+	t.Run("triangular Pyramids", func(t *testing.T) {
+		tri := Triangle{12, 6, 17}
+		triPyramid := Pyramid{BaseArea: Triangle.Area(tri), BasePerimeter: Triangle.Perimeter(tri), SlantHeight: 23}
+		checkSurfaceArea(t, triPyramid, 438.5)
+	})
+
+	t.Run("rectangular Pyramids", func(t *testing.T) {
+		rec := Rectangle{12, 6}
+		recPyramid := Pyramid{BaseArea: Rectangle.Area(rec), BasePerimeter: Rectangle.Perimeter(rec), SlantHeight: 23}
+		checkSurfaceArea(t, recPyramid, 486)
+	})
+
 }
