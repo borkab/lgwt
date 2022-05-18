@@ -90,7 +90,7 @@ func TestSurfaceArea(t *testing.T) {
 	tri := Triangle{12, 6, 17}
 	triPyramid := TriangularPyramid{BaseArea: Triangle.Area(tri), BasePerimeter: Triangle.Perimeter(tri), SlantHeight: 23}
 	got := Shapes3D.SurfaceArea(triPyramid)
-	want := 839.0
+	want := 438.5
 
 	if got != want {
 		t.Errorf("got %g want %g", got, want)

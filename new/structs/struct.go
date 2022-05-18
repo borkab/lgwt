@@ -23,6 +23,7 @@ type TriangularPyramid struct {
 	BasePerimeter float64
 	SlantHeight   float64
 }
+
 type Shapes2D interface {
 	Area() float64
 	Perimeter() float64
@@ -62,4 +63,8 @@ func (t Triangle) Area() float64 {
 
 func (tp TriangularPyramid) SurfaceArea() float64 {
 	return tp.BaseArea + (tp.BasePerimeter*tp.SlantHeight)*0.5
+}
+
+func (tp TriangularPyramid) Volume() float64 {
+	return 0
 }
