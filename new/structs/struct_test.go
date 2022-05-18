@@ -26,7 +26,7 @@ func TestPerimeter(t *testing.T) {
 		})
 	*/
 	perimeterTests := []struct { //we are creating a slice of struct
-		shape Shape
+		shape Shapes2D
 		want  float64
 	}{
 		{shape: Rectangle{12, 6}, want: 36.0},
@@ -66,7 +66,7 @@ func TestArea(t *testing.T) {
 	*/
 
 	areaTests := []struct { //we are creating a slice of struct
-		shape Shape
+		shape Shapes2D
 		want  float64
 	}{
 		{shape: Rectangle{12, 6}, want: 72.0},
@@ -81,4 +81,18 @@ func TestArea(t *testing.T) {
 		}
 	}
 
+}
+func TestVolume(t *testing.T) {
+
+}
+
+func TestSurfaceArea(t *testing.T) {
+	tri := Triangle{12, 6, 17}
+	triPyramid := TriangularPyramid{BaseArea: Triangle.Area(tri), BasePerimeter: Triangle.Perimeter(tri), SlantHeight: 23}
+	got := SurfaceArea(triPyramid)
+	want := 839.0
+
+	if got != want {
+		t.Errorf("got %g want %g", got, want)
+	}
 }
