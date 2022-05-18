@@ -61,5 +61,5 @@ func (t Triangle) Area() float64 {
 }
 
 func (tp TriangularPyramid) SurfaceArea() float64 {
-	return tp.BaseArea + (tp.BasePerimeter*tp.SlantHeight)/2
+	return tp.BaseArea + (tp.BasePerimeter*tp.SlantHeight)*0.5
 }
