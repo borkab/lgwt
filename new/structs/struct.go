@@ -24,6 +24,14 @@ type Pyramid struct {
 	SlantHeight   float64
 	Height        float64
 }
+type Sphere struct {
+	Circle
+}
+
+type Prism struct {
+	Rectangle Rectangle
+	Length    float64
+}
 
 type Shapes2D interface {
 	Area() float64
@@ -67,5 +75,18 @@ func (p Pyramid) SurfaceArea() float64 {
 }
 
 func (p Pyramid) Volume() float64 {
-	return 0.333333333 * p.BaseArea * p.Height
+	return 0.33333333333333 * p.BaseArea * p.Height
+}
+
+func (s Sphere) Volume() float64 {
+	return 1.33333333333333 * math.Pi * s.Radius * s.Radius * s.Radius
+}
+func (s Sphere) SurfaceArea() float64 {
+	return 4 * math.Pi * s.Radius * s.Radius
+}
+func (p Prism) SurfaceArea() float64 {
+	return 2 * (p.Length*p.Rectangle.Width + p.Length*p.Rectangle.Height + p.Rectangle.Height*p.Rectangle.Width)
+}
+func (p Prism) Volume() float64 {
+	return p.Length * p.Rectangle.Height * p.Rectangle.Width
 }

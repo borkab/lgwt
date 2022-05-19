@@ -83,14 +83,37 @@ func TestArea(t *testing.T) {
 
 }
 func TestVolume(t *testing.T) {
-	tri := Triangle{12, 6, 17}
-	triPyramid := Pyramid{BaseArea: Triangle.Area(tri), BasePerimeter: Triangle.Perimeter(tri), Height: 21}
-	got := Shapes3D.Volume(triPyramid)
-	want := 251.999999748
+	checkVolume := func(t testing.TB, shape Shapes3D, want float64) {
+		t.Helper()
+		got := shape.Volume()
 
-	if got != want {
-		t.Errorf("got %.9f want %.9f", got, want)
+		if got != want {
+			t.Errorf("got %g want %g", got, want)
+		}
 	}
+	t.Run("triangular Pyramids", func(t *testing.T) {
+		tri := Triangle{12, 6, 17}
+		triPyramid := Pyramid{BaseArea: Triangle.Area(tri), BasePerimeter: Triangle.Perimeter(tri), Height: 21}
+		checkVolume(t, triPyramid, 251.99999999999747)
+	})
+
+	t.Run("rectangular Pyramids", func(t *testing.T) {
+		rec := Rectangle{12, 6}
+		recPyramid := Pyramid{BaseArea: Rectangle.Area(rec), BasePerimeter: Rectangle.Perimeter(rec), Height: 21}
+		checkVolume(t, recPyramid, 503.99999999999494)
+	})
+
+	t.Run("Spheres", func(t *testing.T) {
+		sphere := Sphere{Circle{Radius: 10}}
+		checkVolume(t, sphere, 4188.790204786381)
+	})
+
+	t.Run("Prisms", func(t *testing.T) {
+		prism := Prism{Length: 9, Rectangle: Rectangle{Width: 12, Height: 6}}
+		checkVolume(t, prism, 648)
+
+	})
+
 }
 
 func TestSurfaceArea(t *testing.T) {
@@ -115,4 +138,13 @@ func TestSurfaceArea(t *testing.T) {
 		checkSurfaceArea(t, recPyramid, 486)
 	})
 
+	t.Run("Spheres", func(t *testing.T) {
+		sphere := Sphere{Circle{Radius: 10}}
+		checkSurfaceArea(t, sphere, 1256.6370614359173)
+	})
+
+	t.Run("Prisms", func(t *testing.T) {
+		prism := Prism{Length: 9, Rectangle: Rectangle{Width: 12, Height: 6}}
+		checkSurfaceArea(t, prism, 468)
+	})
 }
