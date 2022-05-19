@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 // Bitcoin represent a number of Bitcoins
 type Bitcoin int
@@ -25,8 +28,13 @@ func (w *Wallet) Balance() Bitcoin {
 	// structs pointers are automatically dereferenced
 }
 
-func (w *Wallet) Withdraw(amount Bitcoin) {
+func (w *Wallet) Withdraw(amount Bitcoin) error {
+	if amount > w.balance {
+		return errors.New("oh, no")
+	} //errors.New creates a new error with a message of your choosing.
+
 	w.balance -= amount
+	return nil
 }
 
 func (b *Bitcoin) String() string {
