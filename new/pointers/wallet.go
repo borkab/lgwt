@@ -28,9 +28,11 @@ func (w *Wallet) Balance() Bitcoin {
 	// structs pointers are automatically dereferenced
 }
 
+var ErrInsufficientFunds = errors.New("cannot withdraw, insufficient funds")
+
 func (w *Wallet) Withdraw(amount Bitcoin) error {
 	if amount > w.balance {
-		return errors.New("oh, no")
+		return ErrInsufficientFunds
 	} //errors.New creates a new error with a message of your choosing.
 
 	w.balance -= amount
