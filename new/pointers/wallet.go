@@ -39,6 +39,6 @@ func (w *Wallet) Withdraw(amount Bitcoin) error {
 	return nil
 }
 
-func (b *Bitcoin) String() string {
+func (b Bitcoin) String() string {
 	return fmt.Sprintf("%d BTC", b)
 }
