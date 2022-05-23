@@ -1,13 +1,18 @@
 package main
 
-import "errors"
-
 type Dictionary map[string]string
 
-var (
-	ErrNotFound   = errors.New("couldn't find the word you were looking for")
-	ErrWordExists = errors.New("cannot add word because already exists")
+type DictionaryErr string
+
+const (
+	ErrNotFound   = DictionaryErr("couldn't find the word you were looking for")
+	ErrWordExists = DictionaryErr("cannot add word because already exists")
 )
+
+func (e DictionaryErr) Error() string {
+	return string(e)
+} //We made the errors constant; this required us to create our own
+//DictionaryErr type which implements the error interface.
 
 func (d Dictionary) Search(word string) (string, error) {
 	definition, ok := d[word]
