@@ -52,3 +52,7 @@ func (d Dictionary) Update(word, definition string) error {
 
 	return nil
 }
+
+func (d Dictionary) Delete(word string) {
+	delete(d, word) //delete() is a built in func, it deletes the given element of a map
+}
