@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 	"io"
-	"os"
+	"log"
+	"net/http"
 )
 
 //func Greet(writer *bytes.Buffer, name string) {
@@ -16,7 +17,10 @@ func Greet(writer io.Writer, name string) {
 	//fmt.Fprintf() takes a Writer to send the string to
 
 }
+func MyGreetHandler(w http.ResponseWriter, r *http.Request) {
+	Greet(w, "world")
+}
 
 func main() {
-	Greet(os.Stdout, "Mila")
+	log.Fatal(http.ListenAndServe(":5001", http.HandlerFunc(MyGreetHandler)))
 }
