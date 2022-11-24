@@ -6,13 +6,16 @@ import (
 	"os"
 )
 
+const finalWord = "Go!"
+const countdownStart = 3
+
 // We're using fmt.Fprint which takes an io.Writer
 // (like *bytes.Buffer) and sends a string to it.
 func Countdown(out io.Writer) {
-	for i := 3; i > 0; i-- {
+	for i := countdownStart; i > 0; i-- {
 		fmt.Fprintln(out, i)
 	}
-	fmt.Fprint(out, "Go!")
+	fmt.Fprint(out, finalWord)
 }
 
 func main() {
