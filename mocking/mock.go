@@ -26,12 +26,16 @@ func (s *SpySleeper) Sleep() {
 	s.Calls++
 }
 
+/*
+	 since we are using the ConfigurableSleeper,
+		it is now safe to delete the DefaultSleeper implementation.
+
 type DefaultSleeper struct{}
 
-func (d *DefaultSleeper) Sleep() {
-	time.Sleep(1 * time.Second)
-}
-
+	func (d *DefaultSleeper) Sleep() {
+		time.Sleep(1 * time.Second)
+	}
+*/
 type SpyCountdownOperations struct {
 	Calls []string
 }
@@ -61,7 +65,7 @@ func Countdown(out io.Writer, sleeper Sleeper) {
 }
 
 func main() {
-	sleeper := &DefaultSleeper{}
+	sleeper := &ConfigurableSleeper{1 * time.Second, time.Sleep}
 	Countdown(os.Stdout, sleeper)
 }
 
