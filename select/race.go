@@ -6,22 +6,19 @@ import (
 	"time"
 )
 
+var tenSecondTimeout = 10 * time.Second
+
 func Racer(a, b string) (winner string, err error) {
-	/*	aDuration := measureResponseTime(a)
-		bDuration := measureResponseTime(b)
+	return ConfigurableRacer(a, b, tenSecondTimeout)
+}
 
-		if aDuration < bDuration {
-			return a
-		}
-
-		return b
-	*/
+func ConfigurableRacer(a, b string, timeout time.Duration) (winner string, err error) {
 	select {
 	case <-ping(a):
 		return a, nil
 	case <-ping(b):
 		return b, nil
-	case <-time.After(10 * time.Second):
+	case <-time.After(timeout):
 		return "", fmt.Errorf("timed out, waitind for %s and %s", a, b)
 	}
 }
