@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+/*
 // InMemoryPlayerStore collects data about players in memory
 type InMemoryPlayerStore struct{}
 
@@ -14,8 +15,9 @@ func (i *InMemoryPlayerStore) GetPlayerScore(name string) int {
 }
 
 func (i *InMemoryPlayerStore) RecordWin(name string) {}
+*/
 
 func main() {
-	server := &PlayerServer{&InMemoryPlayerStore{}}
+	server := &PlayerServer{NewInMemoryPlayerStore()}
 	log.Fatal(http.ListenAndServe(":5000", server))
 }
